@@ -60,7 +60,7 @@ class Server implements MessageComponentInterface
      *
      * @var array
      */
-    private $clients = array();
+    private $clients;
 
     /**
      * Constructs a new {@link Server} with the specified {@link Logger}.
@@ -86,45 +86,134 @@ class Server implements MessageComponentInterface
     }
 
     /**
-     * Triggered when a client sends data.
+     * Triggered when a connection sends a message.
      *
      * @param ConnectionInterface $connection The connection that sent the
      *                                        message.
-     * @param string              $data       The data.
+     * @param string              $data       The message.
      *
      * @return void
      */
     public function onMessage(ConnectionInterface $connection, $data)
     {
         if ($this->clients->contains($connection)) {
+
+
             // The client has already authenticated.
-
-            $username = $this->clients[$connection];
-            $message = new Model\Message($data, $username);
-
-            $this->logger->addInfo(
-                'The client has sent a message.',
-                array(
-                    'datetime' => $message->getDatetime(),
-                    'username' => $message->getUsername(),
-                    'message' => $message->getText()
-                )
-            );
-
-            foreach ($this->clients as $client) {
-                $client->send($message->__toString());
-            }
+            // Send the message from the client to each connected client.
+            $this->sendMessageToClients($connection, $data);
         } else {
             // The client has not authenticated yet.
             // The first message contains the username.
 
-            // Store the client to send messages to later.
-            $this->clients[$connection] = $data;
+            // Check if the username is already in use.
+            if ($this->isUsernameAvailable($data)) {
+                $this->logger->addDebug(
+                    'The username is available.', array('username' => $data)
+                );
 
-            $this->logger->addInfo(
-                'The client has authenticated.', array('username' => $data)
-            );
+                // Store the client to send messages to later.
+                $this->addClient($connection, $data);
+            } else {
+                $this->logger->addDebug(
+                    'The username is in use.', array('username' => $data)
+                );
+
+                // Send a message to the client saying that the client is trying
+                // to use an unavailable username.
+                $this->sendMessageUsernameInUse($connection);
+                // Close the connection.
+                $connection->close();
+            }
         }
+    }
+
+    /**
+     * Checks whether the specified username is available (no in use).
+     *
+     * @param string $username The username to check.
+     *
+     * @return boolean `true` if the username is available; `false` otherwise.
+     */
+    private function isUsernameAvailable($username)
+    {
+        $result = true;
+
+        foreach ($this->clients as $client) {
+            if ($this->clients->offsetGet($client) == $username) {
+                $result = false;
+                break;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Sends a message to the specified connection, saying that the connection
+     * is trying to use an username that is already in use.
+     *
+     * @param ConnectionInterface $connection The connection to sent the
+     *                                        message to.
+     *
+     * @return void
+     */
+    private function sendMessageUsernameInUse(
+        ConnectionInterface $connection
+    )
+    {
+        $messageObj = new Model\Message(
+            'The username is already in use.', 'chat-server'
+        );
+        $connection->send($messageObj->__toString());
+    }
+
+    /**
+     * Sends the specified message from the specified connection to each
+     * connected client.
+     *
+     * @param ConnectionInterface $connection The connection that sent the
+     *                                        message.
+     * @param string              $message    The message.
+     *
+     * @return void
+     */
+    private function sendMessageToClients(
+        ConnectionInterface $connection, $message
+    ) {
+        $username = $this->clients[$connection];
+        $messageObj = new Model\Message($message, $username);
+
+        $this->logger->addInfo(
+            'A client has sent a message.',
+            array(
+                'datetime' => $messageObj->getDatetime(),
+                'username' => $messageObj->getUsername(),
+                'message' => $messageObj->getText()
+            )
+        );
+
+        foreach ($this->clients as $client) {
+            $client->send($messageObj->__toString());
+        }
+    }
+
+    /**
+     * Adds the specified connection to the connected clients.
+     *
+     * @param ConnectionInterface $connection The connection to add.
+     * @param string              $username   The username of the client.
+     *
+     * @return void
+     */
+    private function addClient(
+        ConnectionInterface $connection, $username
+    ) {
+        $this->clients->attach($connection, $username);
+
+        $this->logger->addInfo(
+            'The client has authenticated.', array('username' => $username)
+        );
     }
 
     /**
