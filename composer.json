@@ -1,5 +1,5 @@
 {
-    "description": "A simpleapplication that demonstrates a chat server application that uses the WebSocket protocol.",
+    "description": "A simple application implementing a chat server that uses the WebSocket protocol.",
     "homepage": "http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server",
     "license": "LGPL-3.0+",
     "authors": [

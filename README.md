@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/FlorianWolters/PHP-WebSocket-Chat-Server.png?branch=master)](http://travis-ci.org/FlorianWolters/PHP-WebSocket-Chat-Server)
 
-**FlorianWolters\Application\Chat** is a simple [PHP][17] application that demonstrates a chat server application that uses [The WebSocket Protocol][21].
+**FlorianWolters\Application\Chat** is a simple [PHP][17] application implementing a chat server that uses [The WebSocket Protocol][21].
 
 See [FlorianWolters/WebSocket-Chat-Client][22] for a multi-user chat client that is compatible with this chat server.
 
