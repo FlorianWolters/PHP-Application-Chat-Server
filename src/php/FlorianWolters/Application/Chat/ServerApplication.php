@@ -23,14 +23,12 @@
  * @copyright 2012 Florian Wolters
  * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
  * @version   GIT: $Id$
- * @link      http://github.com/FlorianWolters/WebSocket-Chat-Server
+ * @link      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
  * @since     File available since Release 0.1.0
  */
 
 namespace FlorianWolters\Application\Chat;
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Symfony\Component\Console\Application;
 
 /**
@@ -53,22 +51,10 @@ class ServerApplication extends Application
      */
     public function __construct()
     {
-        parent::__construct('Welcome to WebSocket-Chat-Server', '0.1.0');
-
-        $logger = new Logger('chat-server');
-
-        $handler = array();
-        $handler[] = new StreamHandler(\STDOUT);
-        $handler[] = new StreamHandler(
-            __DIR__ . '/../../../../bin/chat-server.log', Logger::DEBUG
-        );
-
-        foreach ($handler as $handler) {
-            $logger->pushHandler($handler);
-        }
-
+        parent::__construct('FlorianWolters\Application\Chat', '0.1.0');
+        $this->setAutoExit(false);
         $this->add(
-            new Command\RunServerCommand($logger)
+            new Command\RunServerCommand
         );
     }
 

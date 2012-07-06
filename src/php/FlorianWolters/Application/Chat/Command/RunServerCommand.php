@@ -31,6 +31,8 @@
 namespace FlorianWolters\Application\Chat\Command;
 
 use FlorianWolters\Application\Chat\Server;
+use Monolog\Handler\NullHandler;
+use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
@@ -38,6 +40,7 @@ use React\Socket\ConnectionException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -52,6 +55,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @version    Release: @package_version@
  * @link       http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
  * @since      Class available since Release 0.1.0
+ * @todo       Refactoring of this class (high CCN).
  */
 class RunServerCommand extends Command
 {
@@ -71,6 +75,29 @@ class RunServerCommand extends Command
     const DEFAULT_ADDRESS = '0.0.0.0';
 
     /**
+     * The default level to use for the {@link Logger}.
+     *
+     * @var string
+     */
+    const DEFAULT_LOGLEVEL = Logger::WARNING;
+
+    /**
+     * The available levels for the {@link Logger}.
+     *
+     * @var array
+     * @todo Bad design, since Monolog also declares these. But the Monolog API
+     *       does not allow to access the data.
+     */
+    private static $logLevels = array(
+        100 => 'DEBUG',
+        200 => 'INFO',
+        300 => 'WARNING',
+        400 => 'ERROR',
+        500 => 'CRITICAL',
+        550 => 'ALERT'
+    );
+
+    /**
      * The {@link Logger} to use.
      *
      * @var Logger
@@ -78,26 +105,23 @@ class RunServerCommand extends Command
     private $logger;
 
     /**
-     * Constructs a new {@link RunServerCommand} with the specified {@link
-     * Logger}.
-     *
-     * @param Logger $logger The {@link Logger} to use.
+     * Constructs a new {@link RunServerCommand}.
      */
-    public function __construct(Logger $logger)
+    public function __construct()
     {
-        parent::__construct();
-        $this->logger = $logger;
+        $name = 'run';
+        parent::__construct($name);
+        $this->logger = new Logger($name);
     }
 
     /**
-     * Configure this command.
+     * Configure this {@link RunServerCommand}.
      *
      * @return void
      */
     protected function configure()
     {
-        $this->setName('run')
-            ->setDescription('Runs the chat server.')
+        $this->setDescription('Runs the chat server.')
             ->addArgument(
                 'port',
                 InputArgument::OPTIONAL,
@@ -110,65 +134,225 @@ class RunServerCommand extends Command
                 'The IP address to use.',
                 self::DEFAULT_ADDRESS
             )
+            ->addOption(
+                'logtype',
+                null,
+                InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY,
+                'The type of logger to use (STDOUT, FILE).'
+            )
+            ->addOption(
+                'loglevel',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The level for the logger to use ('
+                    . \implode(self::$logLevels, ', ') . '}).',
+                self::$logLevels[self::DEFAULT_LOGLEVEL]
+            )
+            ->addOption(
+                'test',
+                null,
+                null,
+                'Run the application in test mode (for automated tests).'
+            )
             ->setHelp(
                 'Runs the chat server on the optionally specified TCP/IP port '
-                . '(default: ' . self::DEFAULT_PORT . ') and the optionally'
-                . ' specified IP address (default: ' . self::DEFAULT_ADDRESS
-                . ').'
+                . 'and the optionally specified IP address.'
+                . \PHP_EOL . \PHP_EOL
+                . 'The type of the logger (log to STDOUT, log to the file '
+                . '"chat-server.log" or log to both) and the level of the '
+                . 'logger can be specified. The default level logs warnings '
+                . 'and all levels above.'
             );
     }
 
+
     /**
-     * Execute this command.
+     * Execute this {@link RunServerCommand}.
      *
      * @param InputInterface  $input  An {@link InputInterface} instance.
      * @param OutputInterface $output An {@link OutputInterface} instance.
      *
-     * @return integer `0` on success; `1` if unable to start the chat server.
+     * @return integer `0` on success; `1` if unable to start the chat server;
+     *                 `2` if the `--logtype` option is invalid; `3` if the
+     *                 `--loglevel` option is invalid.
+     * @todo Refactoring of this method (high CCN).
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $return = 0;
+        $logLevelName = $input->getOption('loglevel');
+        $logLevel = \array_search($logLevelName, self::$logLevels, true);
+        if (false === $logLevel) {
+            $this->writeInvalidUsageMessage(
+                $output, 'The specified --loglevel option value is invalid.'
+            );
+            return 3;
+        }
 
+        $logType = $input->getOption('logtype');
+
+        if (false === $this->createHandlers($logType, $logLevel)) {
+            $this->writeInvalidUsageMessage(
+                $output,
+                'The specified --logtype option value is invalid.'
+            );
+            return 2;
+        }
+
+        // TODO Add argument validation.
         $port = $input->getArgument('port');
         $address = $input->getArgument('address');
 
         try {
-            $webSocketServer = new WsServer(
-                new Server($this->logger)
+            $server = new Server($this->logger);
+            $webSocketServer = new WsServer($server);
+
+            // TODO Remove "@" if fixed in React\Socket\Server.
+            // https://github.com/react-php/react/issues/45
+            $inputOutputServer = @IoServer::factory(
+                $webSocketServer, $port, $address
             );
-
-            // TODO Remove @ if fixed in React/Socket/Server.
-            // Link: https://github.com/react-php/react/issues/45
-            $server = @IoServer::factory($webSocketServer, $port, $address);
-
-            $output->writeln('Starting chat server...');
-            $output->writeln('');
-            $output->writeln(
-                "Waiting for incoming connections on {$address}:{$port}..."
-            );
-
-            $this->logger->addDebug(
-                'Starting chat server...',
-                array('port' => $port, 'address' => $address)
-            );
-
-            $server->run();
         } catch (ConnectionException $ex) {
-            $message = 'Unable to start the chat server';
-            $output->writeln(
-                "{$message} on {$address}:{$port}."
+            $this->logger->addError(
+                'The chat server could not be started',
+                array(
+                    'port' => $port,
+                    'address' => $address,
+                    'exception' => $ex->getMessage()
+                )
             );
 
-            $this->logger->addWarning(
-                "{$message}.",
-                array('port' => $port, 'address' => $address)
-            );
+            $this->writeFailureMessage($output, $port, $address);
 
-            $return = 1;
+            return 1;
         }
 
-        return $return;
+        $this->logger->addDebug(
+            'The chat server was started.',
+            array('port' => $port, 'address' => $address)
+        );
+
+        $this->writeSuccessMessage($output, $port, $address);
+
+        if (false === $input->getOption('test')) {
+            // Only run if not in test mode.
+            $inputOutputServer->run();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Writes a message to the output saying that this {@link RunServerCommand}
+     * was successful.
+     *
+     * @param OutputInterface $output  An {@link OutputInterface} instance.
+     * @param integer         $port    The TCP/IP port number.
+     * @param string          $address The IP address.
+     *
+     * @return void
+     */
+    private function writeSuccessMessage(
+        OutputInterface $output, $port, $address
+    ) {
+        $output->writeln('Starting chat server...');
+        $output->writeln('');
+        $output->writeln(
+            "Waiting for incoming connections on {$address}:{$port}..."
+        );
+    }
+
+    /**
+     * Writes a message to the output saying that this {@link RunServerCommand}
+     * has failed.
+     *
+     * @param OutputInterface $output  An {@link OutputInterface} instance.
+     * @param integer         $port    The TCP/IP port number.
+     * @param string          $address The IP address.
+     *
+     * @return void
+     */
+    private function writeFailureMessage(
+        OutputInterface $output, $port, $address
+    ) {
+        $output->writeln(
+            "Unable to start the chat server on {$address}:{$port}."
+        );
+    }
+
+    /**
+     * Writes a message to the output saying that this {@link RunServerCommand}
+     * was used incorrectly.
+     *
+     * @param OutputInterface $output An {@link OutputInterface} instance.
+     * @param string          $reason The reason for the invalid usage.
+     *
+     * @return void
+     */
+    private function writeInvalidUsageMessage(OutputInterface $output, $reason)
+    {
+        $output->writeln($reason);
+        $output->writeln('');
+        // TODO Retrieve the name of the script dynamically.
+        $output->writeln(
+            'Run "chat-server help ' . $this->getName() . '" for the help.'
+        );
+    }
+
+    /**
+     * Creates the handlers for the {@link Logger}.
+     *
+     * @param array   $logType  The logtype(s).
+     * @param integer $logLevel The loglevel.
+     *
+     * @return boolean `true` if the handlers have been created; `false` if one
+     *                 or more invalid handlers have been specified.
+     */
+    private function createHandlers(array $logType, $logLevel)
+    {
+        $result = true;
+        $handlers = array();
+
+        if (true === empty($logType)) {
+            $handlers[] = new NullHandler;
+        } else {
+            foreach ($logType as $each) {
+                switch (\strtolower($each)) {
+                    case 'stdout':
+                        $handlers[] = new StreamHandler(\STDOUT, $logLevel);
+                        break;
+                    case 'file':
+                        // TODO Make filepath configurable.
+                        $handlers[] = new StreamHandler(
+                            __DIR__ . '/../../../../../bin/chat-server.log',
+                            $logLevel
+                        );
+                        break;
+                    default:
+                        $result = false;
+                        break 2;
+                }
+            }
+        }
+
+        if (true === $result) {
+            $this->pushHandlersToLogger($handlers);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Pushes the specified handlers to the {@link Logger}.
+     *
+     * @param array $handlers The handlers to push.
+     *
+     * @return void
+     */
+    private function pushHandlersToLogger(array $handlers)
+    {
+        foreach ($handlers as $handler) {
+            $this->logger->pushHandler($handler);
+        }
     }
 
 }
