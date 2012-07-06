@@ -1,5 +1,5 @@
 {
-    "hash": "0c670680e14608e03fae3eb45db2acd1",
+    "hash": "c0c5e44a4047063f6240b75f33308a36",
     "packages": [
         {
             "package": "cboden/Ratchet",
@@ -48,14 +48,14 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8"
+            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         }
     ],
     "packages-dev": null,
