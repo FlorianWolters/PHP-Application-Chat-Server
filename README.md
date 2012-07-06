@@ -39,7 +39,57 @@ See [FlorianWolters/WebSocket-Chat-Client][22] for a multi-user chat client that
 
 ## Usage
 
-Coming soon.
+The binary scripts are places in the folder `src/bin`:
+
+* `chat-server.php` for *-nix operating systems
+* `chat-server.cmd` for Windows operating systems (simply calls `chat-server.php`)
+
+Run the following for the general help of the application:
+
+* *-nix shell
+
+  ```sh
+  ./chat-server.php help
+  ```
+
+* Windows command-line
+
+  ```cmd
+  chat-server.cmd help
+  ```
+
+At this moment, the server only supports the `run` command. To get help for the `run` command, run the following:
+
+* *-nix shell
+
+  ```sh
+  ./chat-server.php help run
+  ```
+
+* Windows command-line
+
+  ```cmd
+  chat-server.cmd help run
+  ```
+
+The following output should be displayed. That is all one needs to know to start the chat server.
+
+    Usage:
+     run [--logtype="..."] [--loglevel="..."] [--test] [port] [address]
+
+    Arguments:
+     port        The TCP/IP port to use. (default: 8000)
+     address     The IP address to use. (default: 0.0.0.0)
+
+    Options:
+     --logtype   The type of logger to use (STDOUT, FILE). (multiple values allowed)
+     --loglevel  The level for the logger to use (DEBUG, INFO, WARNING, ERROR, CRITICAL, ALERT}). (default: WARNING)
+     --test      Run the application in test mode (for automated tests).
+
+    Help:
+     Runs the chat server on the optionally specified TCP/IP port and the optionally specified IP address.
+
+     The type of the logger (log to STDOUT, log to the file "chat-server.log" or log to both) and the level of the logger can be specified. The default level logs warnings and all levels above.
 
 ## License
 
