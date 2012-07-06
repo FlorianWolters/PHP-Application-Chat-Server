@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://florianwolters.github.com/PHP-WebSocket-Chat-Server/sitemap.xml
