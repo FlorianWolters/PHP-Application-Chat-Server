@@ -96,9 +96,9 @@ class Server implements MessageComponentInterface
      */
     public function onMessage(ConnectionInterface $connection, $data)
     {
+        // TODO Refactor into methods (reason: high CCN).
+
         if ($this->clients->contains($connection)) {
-
-
             // The client has already authenticated.
             // Send the message from the client to each connected client.
             $this->sendMessageToClients($connection, $data);
@@ -129,7 +129,7 @@ class Server implements MessageComponentInterface
     }
 
     /**
-     * Checks whether the specified username is available (no in use).
+     * Checks whether the specified username is available (not in use).
      *
      * @param string $username The username to check.
      *
@@ -140,7 +140,7 @@ class Server implements MessageComponentInterface
         $result = true;
 
         foreach ($this->clients as $client) {
-            if ($this->clients->offsetGet($client) == $username) {
+            if ($this->clients->offsetGet($client) === $username) {
                 $result = false;
                 break;
             }
@@ -160,8 +160,7 @@ class Server implements MessageComponentInterface
      */
     private function sendMessageUsernameInUse(
         ConnectionInterface $connection
-    )
-    {
+    ) {
         $messageObj = new Model\Message(
             'The username is already in use.', 'chat-server'
         );
@@ -212,7 +211,7 @@ class Server implements MessageComponentInterface
         $this->clients->attach($connection, $username);
 
         $this->logger->addInfo(
-            'The client has authenticated.', array('username' => $username)
+            'A client has authenticated.', array('username' => $username)
         );
     }
 
@@ -251,6 +250,16 @@ class Server implements MessageComponentInterface
         $connection->close();
 
         $this->logger->addError("An error has occurred: {$ex->getMessage()}");
+    }
+
+    /**
+     * Returns the number of clients connected to this {@link Server}.
+     *
+     * @return integer The number of clients.
+     */
+    public function countClients()
+    {
+        return $this->clients->count();
     }
 
 }
