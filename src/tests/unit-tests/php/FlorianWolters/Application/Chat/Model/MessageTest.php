@@ -44,7 +44,7 @@ namespace FlorianWolters\Application\Chat\Model;
  * @link       Message
  * @since      Class available since Release 0.1.0
  *
- * @covers FlorianWolters\Application\Chat\Model\Message
+ * @covers     FlorianWolters\Application\Chat\Model\Message
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
