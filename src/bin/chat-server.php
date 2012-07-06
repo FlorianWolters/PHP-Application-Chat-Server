@@ -1,5 +1,4 @@
 #!/usr/bin/env php
-# app/chat-server
 <?php
 /**
  * `chat-server.php`
