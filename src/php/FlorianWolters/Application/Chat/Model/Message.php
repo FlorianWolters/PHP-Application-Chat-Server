@@ -91,8 +91,8 @@ class Message
             $datetime = new \DateTime;
         }
 
-        $this->text = $text;
-        $this->username = $username;
+        $this->text = \htmlspecialchars($text, \ENT_QUOTES);
+        $this->username = \htmlspecialchars($username, \ENT_QUOTES);
         $this->datetime = $datetime->format(self::DATETIME_FORMAT);
     }
 
