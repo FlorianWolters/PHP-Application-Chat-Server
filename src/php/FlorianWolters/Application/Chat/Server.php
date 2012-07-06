@@ -58,7 +58,7 @@ class Server implements MessageComponentInterface
     /**
      * The clients connected to this {@link Server}.
      *
-     * @var array
+     * @var SplObjectStorage
      */
     private $clients;
 
@@ -186,7 +186,7 @@ class Server implements MessageComponentInterface
         $this->logger->addInfo(
             'A client has sent a message.',
             array(
-                'datetime' => $messageObj->getDatetime(),
+                'datetime' => $messageObj->getDateTime(),
                 'username' => $messageObj->getUsername(),
                 'message' => $messageObj->getText()
             )

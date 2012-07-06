@@ -47,7 +47,7 @@ class Message
 {
 
     /**
-     * The datetime format of this {@link Message}.
+     * The format for the date and time of a {@link Message}.
      *
      * @var string
      */
@@ -68,32 +68,32 @@ class Message
     private $username;
 
     /**
-     * The datetime of this {@link Message}.
+     * The date and time of this {@link Message}.
      *
      * @var integer
      */
-    private $datetime;
+    private $dateTime;
 
     /**
      * Constructs a new {@link Message} with a specified text, a specified
-     * username and an optional datetime.
+     * username and an optional date and time.
      *
      * If the datetime is not specified, the current datetime is used.
      *
      * @param string    $text     The text of the {@link Message}.
      * @param string    $username The username of the user who wrote this {@link
      *                            Message}.
-     * @param \DateTime $datetime The datetime of the {@link Message}.
+     * @param \DateTime $dateTime The date and time of the {@link Message}.
      */
-    public function __construct($text, $username, \DateTime $datetime = null)
+    public function __construct($text, $username, \DateTime $dateTime = null)
     {
-        if (null === $datetime) {
-            $datetime = new \DateTime;
+        if (null === $dateTime) {
+            $dateTime = new \DateTime;
         }
 
         $this->text = \htmlspecialchars($text, \ENT_QUOTES);
         $this->username = \htmlspecialchars($username, \ENT_QUOTES);
-        $this->datetime = $datetime->format(self::DATETIME_FORMAT);
+        $this->dateTime = $dateTime->format(self::DATETIME_FORMAT);
     }
 
     /**
@@ -105,7 +105,7 @@ class Message
     {
         return \json_encode(
             array(
-                'ts' => $this->datetime,
+                'ts' => $this->dateTime,
                 'uid' => $this->username,
                 'msg' => $this->text
             )
@@ -133,13 +133,13 @@ class Message
     }
 
     /**
-     * Returns the datetime of this {@link Message}.
+     * Returns the date and time of this {@link Message}.
      *
-     * @return string The datetime.
+     * @return string The date and time.
      */
-    public function getDatetime()
+    public function getDateTime()
     {
-        return $this->datetime;
+        return $this->dateTime;
     }
 
 }
