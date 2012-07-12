@@ -1,5 +1,5 @@
 {
-    "hash": "c0c5e44a4047063f6240b75f33308a36",
+    "hash": "d0cae456dd402082308665910d3e536c",
     "packages": [
         {
             "package": "cboden/Ratchet",
@@ -8,7 +8,8 @@
         {
             "package": "evenement/evenement",
             "version": "1.0.x-dev",
-            "source-reference": "v1.0.0"
+            "source-reference": "v1.0.0",
+            "commit-date": "1338390068"
         },
         {
             "package": "guzzle/guzzle",
@@ -21,48 +22,45 @@
         {
             "package": "react/event-loop",
             "version": "dev-master",
-            "source-reference": "0927a2129394f10cc8534994271c6073ca9e350c"
+            "source-reference": "0927a2129394f10cc8534994271c6073ca9e350c",
+            "commit-date": "1337810634"
         },
         {
             "package": "react/socket",
             "version": "dev-master",
-            "source-reference": "e6f56a2d9ed1ad51d931ae3d3fee4a5803585bc8"
+            "source-reference": "e6f56a2d9ed1ad51d931ae3d3fee4a5803585bc8",
+            "commit-date": "1340206359"
         },
         {
             "package": "symfony/console",
             "version": "2.0.x-dev",
-            "source-reference": "v2.0.15"
-        },
-        {
-            "package": "symfony/event-dispatcher",
-            "version": "dev-master",
-            "source-reference": "v2.1.0-BETA1"
+            "source-reference": "v2.0.15",
+            "commit-date": "1337159406"
         },
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
             "source-reference": "v2.1.0-BETA1",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "commit-date": "1338018513"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
         },
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
             "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "commit-date": "1341379664"
         }
     ],
     "packages-dev": null,
     "aliases": [
 
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": [
 
     ]
