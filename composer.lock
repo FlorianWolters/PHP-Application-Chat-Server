@@ -1,5 +1,5 @@
 {
-    "hash": "d0cae456dd402082308665910d3e536c",
+    "hash": "6a3c911fa257bf227c7799acaad54aab",
     "packages": [
         {
             "package": "cboden/Ratchet",
@@ -21,27 +21,27 @@
         },
         {
             "package": "react/event-loop",
-            "version": "dev-master",
-            "source-reference": "0927a2129394f10cc8534994271c6073ca9e350c",
-            "commit-date": "1337810634"
+            "version": "v0.1.0"
         },
         {
             "package": "react/socket",
             "version": "dev-master",
-            "source-reference": "e6f56a2d9ed1ad51d931ae3d3fee4a5803585bc8",
-            "commit-date": "1340206359"
+            "source-reference": "v0.1.0",
+            "commit-date": "1342021402"
+        },
+        {
+            "package": "react/stream",
+            "version": "v0.1.0"
         },
         {
             "package": "symfony/console",
-            "version": "2.0.x-dev",
-            "source-reference": "v2.0.15",
-            "commit-date": "1337159406"
+            "version": "v2.0.16"
         },
         {
             "package": "symfony/event-dispatcher",
             "version": "dev-master",
-            "source-reference": "v2.1.0-BETA1",
-            "commit-date": "1338018513"
+            "source-reference": "0dc437f2eca7dea19facfde6db7f7f5e8e71d0bc",
+            "commit-date": "1341838460"
         },
         {
             "package": "symfony/http-foundation",
@@ -52,16 +52,18 @@
         {
             "package": "symfony/http-foundation",
             "version": "dev-master",
-            "source-reference": "3e53f0a9f802dc1f34a722109df0b0d2679671a8",
-            "commit-date": "1341379664"
+            "source-reference": "1a450955d5c487d85a7aaae4d8e306316c2a2f79",
+            "commit-date": "1341951444"
         }
     ],
     "packages-dev": null,
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "cboden/ratchet": 0,
+        "monolog/monolog": 0,
+        "symfony/console": 0
+    }
 }
