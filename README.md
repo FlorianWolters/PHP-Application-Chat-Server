@@ -4,14 +4,16 @@
 
 **FlorianWolters\Application\Chat** is a simple [PHP][17] application implementing a chat server that uses [The WebSocket Protocol][21].
 
+Access to the shell/command-line is required and a dedicated machine with root access is recommended to run **FlorianWolters\Application\Chat**.
+
 See [FlorianWolters/WebSocket-Chat-Client][22] for a multi-user chat client that is compatible with this chat server.
 
 ## Requirements
 
-* [PHP][17] 5.3.0 (or later)
-* [Monolog][23] 1.8.0 (or later)
-* [Ratchet][24] 0.1.4 (or later)
-* [Symfony\Component\Console][25] 2.0.0 (or later)
+* [PHP][17] > 5.3.3, < 5.4
+* [Monolog][23] 1.8.*
+* [Ratchet][24] 0.1.*
+* [Symfony Console Component][25] 2.0.*
 
 ## Features
 
@@ -27,15 +29,25 @@ See [FlorianWolters/WebSocket-Chat-Client][22] for a multi-user chat client that
 
 ## Installation
 
-**FlorianWolters\Application\Chat** should be installed using the dependency manager [Composer][3]. [Composer][1] can be installed with [PHP][6].
+Clone the repository into a new directory.
+
+    git clone git://github.com/FlorianWolters/PHP-WebSocket-Chat-Server.git
+
+Install the dependencies of this project with the dependency manager [Composer][3]. [Composer][3] can be installed with [PHP][17]:
 
     php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 
-> This will just check a few [PHP][17] settings and then download `composer.phar` to your working directory. This file is the [Composer][1] binary. It is a PHAR ([PHP][17] archive), which is an archive format for [PHP][17] which can be run on the command line, amongst other things.
+> This will just check a few [PHP][17] settings and then download `composer.phar` to your working directory. This file is the [Composer][3] binary. It is a PHAR ([PHP][17] archive), which is an archive format for [PHP][17] which can be run on the command line, amongst other things.
 >
 > Next, run the `install` command to resolve and download dependencies:
 
     php composer.phar install
+
+The latest snapshot of [Composer][3] can be downloaded [here][26] (in case the download or the installation with [PHP][17] fails).
+
+The automated tests can be run with [PHPUnit][19]:
+
+    phpunit
 
 ## Usage
 
@@ -72,7 +84,7 @@ At this moment, the server only supports the `run` command. To get help for the 
   chat-server.cmd help run
   ```
 
-The following output should be displayed. That is all one needs to know to start the chat server.
+The following output should be displayed.
 
     Usage:
      run [--logtype="..."] [--loglevel="..."] [--test] [port] [address]
@@ -117,3 +129,4 @@ You should have received a copy of the GNU Lesser General Public License along w
 [23]: https://github.com/Seldaek/monolog
 [24]: http://socketo.me
 [25]: http://symfony.com/doc/current/components/console.html
+[26]: http://getcomposer.org/composer.phar
