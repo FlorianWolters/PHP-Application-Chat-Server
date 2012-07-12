@@ -89,10 +89,13 @@ class ServerApplicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testRun()
     {
-        $expected = "Starting chat server...\r\n\r\n"
-            . "Waiting for incoming connections on 0.0.0.0:8000...\r\n";
         $display = $this->applicationTester->getDisplay();
-        $this->assertEquals($expected, $display);
+
+        $expected = 'Starting chat server...';
+        $this->assertContains($expected, $display);
+
+        $expected = 'Waiting for incoming connections on 0.0.0.0:8000...';
+        $this->assertContains($expected, $display);
     }
 
 }
