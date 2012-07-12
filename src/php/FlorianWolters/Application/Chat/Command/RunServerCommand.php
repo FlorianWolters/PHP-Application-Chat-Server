@@ -174,11 +174,29 @@ class RunServerCommand extends Command
      *
      * @return integer `0` on success; `1` if unable to start the chat server;
      *                 `2` if the `--logtype` option is invalid; `3` if the
-     *                 `--loglevel` option is invalid.
+     *                 `--loglevel` option is invalid; `4` if the `address`
+     *                 argument is invalid; `5` if the `port` argument is
+     *                 invalid.
      * @todo Refactoring of this method (high CCN).
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $port = $input->getArgument('port');
+        if (false === $this->isPort($port)) {
+            $this->writeInvalidUsageMessage(
+                $output, 'The "port" argument value is invalid.'
+            );
+            return 5;
+        }
+
+        $address = $input->getArgument('address');
+        if (false === $this->isIpAddress($address)) {
+            $this->writeInvalidUsageMessage(
+                $output, 'The "address" argument value is invalid.'
+            );
+            return 4;
+        }
+
         $logLevelName = $input->getOption('loglevel');
         $logLevel = \array_search($logLevelName, self::$logLevels, true);
         if (false === $logLevel) {
@@ -192,25 +210,34 @@ class RunServerCommand extends Command
 
         if (false === $this->createHandlers($logType, $logLevel)) {
             $this->writeInvalidUsageMessage(
-                $output,
-                'The specified --logtype option value is invalid.'
+                $output, 'The specified --logtype option value is invalid.'
             );
             return 2;
         }
-
-        // TODO Add argument validation.
-        $port = $input->getArgument('port');
-        $address = $input->getArgument('address');
 
         try {
             $server = new Server($this->logger);
             $webSocketServer = new WsServer($server);
 
-            // TODO Remove "@" if fixed in React\Socket\Server.
-            // https://github.com/react-php/react/issues/45
-            $inputOutputServer = @IoServer::factory(
-                $webSocketServer, $port, $address
+            if (false === $input->getOption('test')) {
+                // TODO Remove "@" if fixed in React\Socket\Server.
+                // https://github.com/react-php/react/issues/45
+                $inputOutputServer = @IoServer::factory(
+                    $webSocketServer, $port, $address
+                );
+            }
+
+            $this->logger->addDebug(
+                'The chat server was started.',
+                array('port' => $port, 'address' => $address)
             );
+
+            $this->writeSuccessMessage($output, $port, $address);
+
+            if (false === $input->getOption('test')) {
+                // Only run if not in test mode.
+                $inputOutputServer->run();
+            }
         } catch (ConnectionException $ex) {
             $this->logger->addError(
                 'The chat server could not be started',
@@ -226,19 +253,34 @@ class RunServerCommand extends Command
             return 1;
         }
 
-        $this->logger->addDebug(
-            'The chat server was started.',
-            array('port' => $port, 'address' => $address)
-        );
-
-        $this->writeSuccessMessage($output, $port, $address);
-
-        if (false === $input->getOption('test')) {
-            // Only run if not in test mode.
-            $inputOutputServer->run();
-        }
-
         return 0;
+    }
+
+    // TODO Use a external validation component or create a helper class with
+    // validation functions.
+
+    /**
+     * Checks whether the specified argument is a valid TCP/IP port.
+     *
+     * @param mixed $value The argument to validate.
+     *
+     * @return boolean `true` on success; `false` on failure.
+     */
+    private function isPort($value)
+    {
+        return (true === is_int($value)) || ($value < 0) || ($value > 65535);
+    }
+
+    /**
+     * Checks whether the specified argument is a valid IP address.
+     *
+     * @param mixed $value The argument to validate.
+     *
+     * @return boolean `true` on success; `false` on failure.
+     */
+    private function isIpAddress($value)
+    {
+        return \filter_var($value, \FILTER_VALIDATE_IP);
     }
 
     /**
