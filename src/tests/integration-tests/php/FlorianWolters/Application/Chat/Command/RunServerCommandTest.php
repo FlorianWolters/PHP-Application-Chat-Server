@@ -147,12 +147,12 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
      */
     public function testExecuteWithAddressArgument()
     {
-        $this->commandArguments['address'] = 'localhost';
+        $this->commandArguments['address'] = '127.0.0.1';
         $this->commandTester->execute($this->commandArguments);
 
         $display = $this->commandTester->getDisplay();
 
-        $expected = 'on localhost:';
+        $expected = 'on 127.0.0.1:';
         $this->assertContains($expected, $display);
     }
 
