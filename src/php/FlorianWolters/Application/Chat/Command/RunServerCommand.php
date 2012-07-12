@@ -220,9 +220,7 @@ class RunServerCommand extends Command
             $webSocketServer = new WsServer($server);
 
             if (false === $input->getOption('test')) {
-                // TODO Remove "@" if fixed in React\Socket\Server.
-                // https://github.com/react-php/react/issues/45
-                $inputOutputServer = @IoServer::factory(
+                $inputOutputServer = IoServer::factory(
                     $webSocketServer, $port, $address
                 );
             }
