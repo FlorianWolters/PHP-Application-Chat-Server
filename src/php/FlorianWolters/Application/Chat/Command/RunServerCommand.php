@@ -207,7 +207,6 @@ class RunServerCommand extends Command
         }
 
         $logType = $input->getOption('logtype');
-
         if (false === $this->createHandlers($logType, $logLevel)) {
             $this->writeInvalidUsageMessage(
                 $output, 'The specified --logtype option value is invalid.'
@@ -266,7 +265,9 @@ class RunServerCommand extends Command
      */
     private function isPort($value)
     {
-        return (true === is_int($value)) || ($value < 0) || ($value > 65535);
+        return (true === \is_numeric($value))
+            && ($value > -1)
+            && ($value < 65536);
     }
 
     /**
