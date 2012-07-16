@@ -76,13 +76,19 @@ class Server implements MessageComponentInterface
     /**
      * Triggered when a new client connection is opened.
      *
-     * @param ConnectionInterface $conn The connection that opened.
+     * @param ConnectionInterface $connection The connection that opened.
      *
      * @return void
      */
-    public function onOpen(ConnectionInterface $conn)
+    public function onOpen(ConnectionInterface $connection)
     {
-        $this->logger->addInfo('A client has connected.');
+        $this->logger->addInfo(
+            "A client has connected.",
+            array(
+                'remoteAddress' => $connection->remoteAddress,
+                'resourceId' => $connection->resourceId
+            )
+        );
     }
 
     /**
@@ -186,6 +192,8 @@ class Server implements MessageComponentInterface
         $this->logger->addInfo(
             'A client has sent a message.',
             array(
+                'remoteAddress' => $connection->remoteAddress,
+                'resourceId' => $connection->resourceId,
                 'datetime' => $messageObj->getDateTime(),
                 'username' => $messageObj->getUsername(),
                 'message' => $messageObj->getText()
@@ -230,7 +238,13 @@ class Server implements MessageComponentInterface
         // messages
         $this->clients->detach($connection);
 
-        $this->logger->addInfo('A client has disconnected.');
+        $this->logger->addInfo(
+            "A client has disconnected.",
+            array(
+                'remoteAddress' => $connection->remoteAddress,
+                'resourceId' => $connection->resourceId
+            )
+        );
     }
 
     /**
