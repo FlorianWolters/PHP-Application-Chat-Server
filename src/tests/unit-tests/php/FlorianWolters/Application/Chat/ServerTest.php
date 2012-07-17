@@ -75,10 +75,8 @@ class ServerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->connection = $this->getMockBuilder(
-            'Ratchet\ConnectionInterface'
-        )->getMock();
-
+        $this->connection = new \Ratchet\Tests\Mock\Connection;
+        $this->connection->resourceId = '#1';
         $this->server = new Server($logger);
     }
 
