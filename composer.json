@@ -14,7 +14,10 @@
         "php": ">= 5.4.0",
         "cboden/Ratchet": "0.1.*",
         "monolog/monolog": "1.1.*",
-        "symfony/console": "2.0.*"
+        "react/event-loop": "@dev",
+        "react/socket": "@dev",
+        "symfony/console": "2.0.*",
+        "symfony/http-foundation": "2.1.*@beta"
     },
     "autoload": {
         "psr-0": {

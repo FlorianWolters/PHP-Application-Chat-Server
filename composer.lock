@@ -1,5 +1,5 @@
 {
-    "hash": "c8711a3997888e5004fcdf8a75000962",
+    "hash": "49bd65a061f4900d03ced6f722a1b41f",
     "packages": [
         {
             "package": "cboden/Ratchet",
@@ -7,9 +7,7 @@
         },
         {
             "package": "evenement/evenement",
-            "version": "1.0.x-dev",
-            "source-reference": "v1.0.0",
-            "commit-date": "1338390068"
+            "version": "v1.0.0"
         },
         {
             "package": "guzzle/guzzle",
@@ -39,21 +37,11 @@
         },
         {
             "package": "symfony/event-dispatcher",
-            "version": "dev-master",
-            "source-reference": "v2.1.0-BETA4",
-            "commit-date": "1342739894"
+            "version": "v2.0.16"
         },
         {
             "package": "symfony/http-foundation",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/http-foundation",
-            "version": "dev-master",
-            "source-reference": "2e28043ea4cd2aa173f5ec9f4f38231fd99305b1",
-            "commit-date": "1343512949"
+            "version": "v2.1.0-BETA4"
         }
     ],
     "packages-dev": null,
@@ -61,7 +49,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "react/event-loop": 20,
+        "react/socket": 20,
+        "symfony/http-foundation": 10
+    }
 }
