@@ -10,12 +10,11 @@
         "role": "Developer"
       }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "php": ">= 5.3.3, < 5.5",
-        "cboden/Ratchet": "0.1.*@stable",
-        "monolog/monolog": "1.1.*@stable",
-        "symfony/console": "2.0.*@stable"
+        "php": ">= 5.4.0",
+        "cboden/Ratchet": "0.1.*",
+        "monolog/monolog": "1.1.*",
+        "symfony/console": "2.0.*"
     },
     "autoload": {
         "psr-0": {
