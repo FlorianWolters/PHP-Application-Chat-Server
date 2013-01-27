@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
-            <name>FlorianWolters\Application\Chat</name>
+            <name>FlorianWolters\Application\Chat\Server</name>
         </data>
     </configuration>
 </project>
