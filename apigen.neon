@@ -13,13 +13,13 @@
 # details.
 #
 # You should have received a copy of the GNU Lesser General Public License along
-# with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
+# with this program.  If not, see <http://gnu.org/licenses/lgpl.txt>.
 #
 # Author:    Florian Wolters <wolters.fl@gmail.com>
 # Copyright: 2012 Florian Wolters
 # License:   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
 # Version:   GIT: $Id$
-# Link:      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
+# Link:      http://github.com/FlorianWolters/PHP-Application-Chat-Server
 
 source: src/php
 destination: review/api
@@ -27,8 +27,8 @@ exclude:
 skipDocPath:
 skipDocPrefix:
 main:
-title: FlorianWolters\Application\Chat
-baseUrl: http://florianwolters.github.com/PHP-WebSocket-Chat-Server
+title: FlorianWolters\Application\Chat\Server
+baseUrl: http://florianwolters.github.com/PHP-Application-Chat-Server
 googleCseId:
 googleCseLabel:
 googleAnalytics:
