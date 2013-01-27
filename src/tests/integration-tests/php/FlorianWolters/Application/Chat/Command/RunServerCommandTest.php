@@ -1,33 +1,4 @@
 <?php
-/**
- * `RunServerCommandTest.php`
- *
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation, either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
- *
- * PHP version 5.3
- *
- * @category   Application
- * @package    Chat
- * @subpackage Command
- * @author     Florian Wolters <wolters.fl@gmail.com>
- * @copyright  2012 Florian Wolters
- * @license    http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version    GIT: $Id$
- * @link       http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
- * @since      File available since Release 0.1.0
- */
-
 namespace FlorianWolters\Application\Chat\Command;
 
 use Symfony\Component\Console\Application;
@@ -36,22 +7,16 @@ use Symfony\Component\Console\Tester\CommandTester;
 /**
  * Test class for {@link RunServerCommand}.
  *
- * @category   Application
- * @package    Chat
- * @subpackage Command
- * @author     Florian Wolters <wolters.fl@gmail.com>
- * @copyright  2012 Florian Wolters
- * @license    http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version    Release: @package_version@
- * @link       http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
- * @see        RunServerCommand
- * @since      Class available since Release 0.1.0
+ * @author    Florian Wolters <wolters.fl@gmail.com>
+ * @copyright 2012-2013 Florian Wolters
+ * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
+ * @link      http://github.com/FlorianWolters/PHP-Application-Chat-Server
+ * @since     Class available since Release 0.1.0
  *
- * @covers     FlorianWolters\Application\Chat\Command\RunServerCommand
+ * @covers    FlorianWolters\Application\Chat\Command\RunServerCommand
  */
 class RunServerCommandTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * The {@link RunServerCommand} under test.
      *
@@ -99,7 +64,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @test
      */
     public function testExecute()
@@ -125,7 +90,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @test
      */
     public function testExecuteWithPortArgument()
@@ -142,7 +107,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @test
      */
     public function testExecuteWithAddressArgument()
@@ -176,7 +141,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @dataProvider providerExecuteWithValidLoglevelOption
      * @test
      */
@@ -191,7 +156,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @test
      */
     public function testExecuteWithInvalidLoglevelOption()
@@ -208,7 +173,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @test
      */
     public function testExecuteWithInvalidLogtypeOption()
@@ -240,7 +205,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      *
-     * @covers FlorianWolters\Application\Chat\Command\RunServerCommand::execute
+     * @coversDefaultClass execute
      * @dataProvider providerExecuteWithValidLogtypeOption
      * @test
      */
@@ -251,5 +216,4 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
 
         $this->isServerStarted();
     }
-
 }

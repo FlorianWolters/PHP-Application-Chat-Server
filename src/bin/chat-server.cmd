@@ -12,13 +12,12 @@ REM FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
 REM for more details.
 REM
 REM You should have received a copy of the GNU Lesser General Public License
-REM along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
+REM along with this program.  If not, see <http://gnu.org/licenses/lgpl.txt>.
 REM
 REM Author:    Florian Wolters <wolters.fl@gmail.com>
-REM Copyright: 2012 Florian Wolters
+REM Copyright: 2012-2013 Florian Wolters
 REM License:   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
-REM Version:   GIT: $Id$
-REM Link:      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
+REM Link:      http://github.com/FlorianWolters/PHP-Application-Chat-Server
 
-TITLE FlorianWolters\Application\Chat
+TITLE FlorianWolters\Application\Chat\Server
 php chat-server.php %*

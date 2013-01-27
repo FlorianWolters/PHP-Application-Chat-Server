@@ -1,32 +1,4 @@
 <?php
-/**
- * `Server.php`
- *
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation, either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
- *
- * PHP version 5.3
- *
- * @category  Application
- * @package   Chat
- * @author    Florian Wolters <wolters.fl@gmail.com>
- * @copyright 2012 Florian Wolters
- * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version   GIT: $Id$
- * @link      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
- * @since     File available since Release 0.1.0
- */
-
 namespace FlorianWolters\Application\Chat;
 
 use Monolog\Logger;
@@ -36,18 +8,13 @@ use Ratchet\ConnectionInterface;
 /**
  * The {@link Server} class contains the logic for the chat server.
  *
- * @category  Application
- * @package   Chat
  * @author    Florian Wolters <wolters.fl@gmail.com>
- * @copyright 2012 Florian Wolters
- * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version   Release: @package_version@
- * @link      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
+ * @copyright 2012-2013 Florian Wolters
+ * @link      http://github.com/FlorianWolters/PHP-Application-Chat-Server
  * @since     Class available since Release 0.1.0
  */
 class Server implements MessageComponentInterface
 {
-
     /**
      * The {@link Logger} to use.
      *
@@ -115,14 +82,16 @@ class Server implements MessageComponentInterface
             // Check if the username is already in use.
             if ($this->isUsernameAvailable($data)) {
                 $this->logger->addDebug(
-                    'The username is available.', array('username' => $data)
+                    'The username is available.',
+                    array('username' => $data)
                 );
 
                 // Store the client to send messages to later.
                 $this->addClient($connection, $data);
             } else {
                 $this->logger->addDebug(
-                    'The username is in use.', array('username' => $data)
+                    'The username is in use.',
+                    array('username' => $data)
                 );
 
                 // Send a message to the client saying that the client is trying
@@ -168,7 +137,8 @@ class Server implements MessageComponentInterface
         ConnectionInterface $connection
     ) {
         $messageObj = new Model\Message(
-            'The username is already in use.', 'chat-server'
+            'The username is already in use.',
+            'chat-server'
         );
         $connection->send($messageObj->__toString());
     }
@@ -184,7 +154,8 @@ class Server implements MessageComponentInterface
      * @return void
      */
     private function sendMessageToClients(
-        ConnectionInterface $connection, $message
+        ConnectionInterface $connection,
+        $message
     ) {
         $username = $this->clients[$connection];
         $messageObj = new Model\Message($message, $username);
@@ -214,12 +185,14 @@ class Server implements MessageComponentInterface
      * @return void
      */
     private function addClient(
-        ConnectionInterface $connection, $username
+        ConnectionInterface $connection,
+        $username
     ) {
         $this->clients->attach($connection, $username);
 
         $this->logger->addInfo(
-            'A client has authenticated.', array('username' => $username)
+            'A client has authenticated.',
+            array('username' => $username)
         );
     }
 
@@ -275,5 +248,4 @@ class Server implements MessageComponentInterface
     {
         return $this->clients->count();
     }
-
 }

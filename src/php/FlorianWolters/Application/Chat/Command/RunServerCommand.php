@@ -1,33 +1,4 @@
 <?php
-/**
- * `RunServerCommand.php`
- *
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation, either version 3 of the License, or (at your option) any
- * later version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
- * details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
- *
- * PHP version 5.3
- *
- * @category   Application
- * @package    Chat
- * @subpackage Command
- * @author     Florian Wolters <wolters.fl@gmail.com>
- * @copyright  2012 Florian Wolters
- * @license    http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version    GIT: $Id$
- * @link       http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
- * @since      File available since Release 0.1.0
- */
-
 namespace FlorianWolters\Application\Chat\Command;
 
 use FlorianWolters\Application\Chat\Server;
@@ -46,20 +17,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * The {@link RunServerCommand} starts the chat server.
  *
- * @category   Application
- * @package    Chat
- * @subpackage Command
- * @author     Florian Wolters <wolters.fl@gmail.com>
- * @copyright  2012 Florian Wolters
- * @license    http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version    Release: @package_version@
- * @link       http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
- * @since      Class available since Release 0.1.0
- * @todo       Refactoring of this class (high CCN).
+ * @author    Florian Wolters <wolters.fl@gmail.com>
+ * @copyright 2012-2013 Florian Wolters
+ * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
+ * @link      http://github.com/FlorianWolters/PHP-Application-Chat-Server
+ * @since     Class available since Release 0.1.0
+ * @todo      Refactoring of this class (high CCN).
  */
 class RunServerCommand extends Command
 {
-
     /**
      * The default TCP/IP port to use for the chat server.
      *
@@ -145,7 +111,7 @@ class RunServerCommand extends Command
                 null,
                 InputOption::VALUE_REQUIRED,
                 'The level for the logger to use ('
-                    . \implode(self::$logLevels, ', ') . '}).',
+                . \implode(self::$logLevels, ', ') . '}).',
                 self::$logLevels[self::DEFAULT_LOGLEVEL]
             )
             ->addOption(
@@ -184,7 +150,8 @@ class RunServerCommand extends Command
         $port = $input->getArgument('port');
         if (false === $this->isPort($port)) {
             $this->writeInvalidUsageMessage(
-                $output, 'The "port" argument value is invalid.'
+                $output,
+                'The "port" argument value is invalid.'
             );
             return 5;
         }
@@ -192,7 +159,8 @@ class RunServerCommand extends Command
         $address = $input->getArgument('address');
         if (false === $this->isIpAddress($address)) {
             $this->writeInvalidUsageMessage(
-                $output, 'The "address" argument value is invalid.'
+                $output,
+                'The "address" argument value is invalid.'
             );
             return 4;
         }
@@ -201,7 +169,8 @@ class RunServerCommand extends Command
         $logLevel = \array_search($logLevelName, self::$logLevels, true);
         if (false === $logLevel) {
             $this->writeInvalidUsageMessage(
-                $output, 'The specified --loglevel option value is invalid.'
+                $output,
+                'The specified --loglevel option value is invalid.'
             );
             return 3;
         }
@@ -209,7 +178,8 @@ class RunServerCommand extends Command
         $logType = $input->getOption('logtype');
         if (false === $this->createHandlers($logType, $logLevel)) {
             $this->writeInvalidUsageMessage(
-                $output, 'The specified --logtype option value is invalid.'
+                $output,
+                'The specified --logtype option value is invalid.'
             );
             return 2;
         }
@@ -220,7 +190,9 @@ class RunServerCommand extends Command
 
             if (false === $input->getOption('test')) {
                 $inputOutputServer = IoServer::factory(
-                    $webSocketServer, $port, $address
+                    $webSocketServer,
+                    $port,
+                    $address
                 );
             }
 
@@ -293,7 +265,9 @@ class RunServerCommand extends Command
      * @return void
      */
     private function writeSuccessMessage(
-        OutputInterface $output, $port, $address
+        OutputInterface $output,
+        $port,
+        $address
     ) {
         $output->writeln('Starting chat server...');
         $output->writeln('');
@@ -313,7 +287,9 @@ class RunServerCommand extends Command
      * @return void
      */
     private function writeFailureMessage(
-        OutputInterface $output, $port, $address
+        OutputInterface $output,
+        $port,
+        $address
     ) {
         $output->writeln(
             "Unable to start the chat server on {$address}:{$port}."
@@ -395,5 +371,4 @@ class RunServerCommand extends Command
             $this->logger->pushHandler($handler);
         }
     }
-
 }

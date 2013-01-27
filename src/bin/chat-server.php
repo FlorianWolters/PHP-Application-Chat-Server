@@ -14,21 +14,20 @@
  * details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
+ * along with this program.  If not, see <http://gnu.org/licenses/lgpl.txt>.
  *
  * PHP version 5.3
  *
- * @category  WebSocket
- * @package   ChatServer
  * @author    Florian Wolters <wolters.fl@gmail.com>
- * @copyright 2012 Florian Wolters
+ * @copyright 2012-2013 Florian Wolters
  * @license   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- * @version   GIT: $Id$
- * @link      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
+ * @link      http://github.com/FlorianWolters/PHP-Application-Chat-Server
  * @since     File available since Release 0.1.0
  */
 
+use FlorianWolters\Application\Chat\ServerApplication;
+
 require __DIR__ . '/../../vendor/autoload.php';
 
-$application = new FlorianWolters\Application\Chat\ServerApplication;
+$application = new ServerApplication;
 exit($application->run());
