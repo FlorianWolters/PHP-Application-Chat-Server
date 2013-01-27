@@ -1,6 +1,6 @@
 {
     "description": "A simple application implementing a chat server that uses the WebSocket protocol.",
-    "homepage": "http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server",
+    "homepage": "http://github.com/FlorianWolters/PHP-Application-Chat-Server",
     "license": "LGPL-3.0+",
     "authors": [
       {
@@ -11,13 +11,11 @@
       }
     ],
     "require": {
-        "php": ">= 5.4.0",
+        "php": ">=5.3.3",
         "cboden/Ratchet": "0.1.*",
-        "monolog/monolog": "1.1.*",
-        "react/event-loop": "@dev",
-        "react/socket": "@dev",
-        "symfony/console": "2.0.*",
-        "symfony/http-foundation": "2.1.*@beta"
+        "monolog/monolog": "1.3.*",
+        "react/socket": "dev-master",
+        "symfony/console": "2.1.*"
     },
     "autoload": {
         "psr-0": {
