@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- ! phpunit.xml
+ ! phpunit.xml.dist
  !
- ! XML configuration file for "PHPUnit".
- !
- ! This XML configuration file can be used as a skeleton for any PHP project.
- ! The options in this file are configured as "strict" as possible (e.g. error
- ! reporting). Furthermore it uses all available logging tools (e.g.
- ! PHP_CodeCoverage). The log files are created in the folder "review".
- !
- ! See http://phpunit.de/manual/3.6/en/appendixes.configuration.html for an
- ! explanation of the XML configuration file.
+ ! XML configuration file for the unit testing framework "PHPUnit".
  !
  ! This program is free software: you can redistribute it and/or modify it under
  ! the terms of the GNU Lesser General Public License as published by the Free
@@ -19,17 +11,16 @@
  !
  ! This program is distributed in the hope that it will be useful, but WITHOUT
  ! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- ! FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more
+ ! FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  ! details.
  !
  ! You should have received a copy of the GNU Lesser General Public License
- ! along with this program.  If not, see http://gnu.org/licenses/lgpl.txt.
+ ! along with this program. If not, see <http://gnu.org/licenses/lgpl.txt>.
  !
  ! Author:    Florian Wolters <wolters.fl@gmail.com>
- ! Copyright: 2012 Florian Wolters
+ ! Copyright: 2011-2012 Florian Wolters
  ! License:   http://gnu.org/licenses/lgpl.txt LGPL-3.0+
- ! Version:   GIT: $Id$
- ! Link:      http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server
+ ! Link:      http://github.com/FlorianWolters/PHP-Application-Chat-Server
  !-->
 
 <!--
@@ -61,11 +52,8 @@
      ! used to compose a test suite out of test suites and test cases.
      !-->
     <testsuites>
-        <testsuite name="Unit Test Suite">
+        <testsuite name="Unit (Class) Test Suite">
             <directory>src/tests/unit-tests/php</directory>
-        </testsuite>
-        <testsuite name="Integration Test Suite">
-            <directory>src/tests/integration-tests/php</directory>
         </testsuite>
     </testsuites>
 
@@ -75,11 +63,11 @@
      !-->
     <filter>
         <blacklist>
-            <directory suffix=".php">src/bin</directory>
             <directory suffix=".php">vendor</directory>
             <directory suffix=".php">src/tests</directory>
         </blacklist>
-        <whitelist addUncoveredFilesFromWhitelist="true">
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/bin</directory>
             <directory suffix=".php">src/php</directory>
             <exclude>
                 <directory suffix="Enum.php">src/php</directory>
@@ -117,28 +105,6 @@
         <log type="testdox-html" target="review/phpunit/testdox.html" />
         <log type="testdox-text" target="review/phpunit/testdox.txt" />
     </logging>
-
-    <!--
-     ! The <selenium> element and its <browser> children can be used configure a
-     ! list of Selenium RC servers.
-     !-->
-    <selenium>
-        <browser name="Mozilla Firefox"
-                 browser="*firefox"
-                 host="127.0.0.1"
-                 port="4444"
-                 timeout="30" />
-        <browser name="Google Chrome"
-                 browser="*chrome"
-                 host="127.0.0.1"
-                 port="4444"
-                 timeout="30" />
-        <browser name="Internet Explorer"
-                 browser="*iexplore"
-                 host="127.0.0.1"
-                 port="4444"
-                 timeout="30" />
-    </selenium>
 
     <!--
      ! The <php> element and its children can be used to configure PHP settings,
