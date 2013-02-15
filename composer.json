@@ -12,14 +12,13 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "cboden/Ratchet": "0.1.*",
-        "monolog/monolog": "1.3.*",
-        "react/socket": "dev-master",
+        "cboden/Ratchet": "0.2.*",
+        "monolog/monolog": "1.4.*",
         "symfony/console": "2.1.*"
     },
     "autoload": {
         "psr-0": {
-            "FlorianWolters": ["src/php"]
+            "FlorianWolters": "src/php"
         }
     }
 }
