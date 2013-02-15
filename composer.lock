@@ -1,5 +1,5 @@
 {
-    "hash": "dfbd7ec9e16abc1da7bccf2444f5c2be",
+    "hash": "a45586e9dd8721547979b16cadfd9995",
     "packages": [
         {
             "name": "cboden/Ratchet",
@@ -428,7 +428,7 @@
         },
         {
             "name": "react/socket",
-            "version": "dev-master",
+            "version": "v0.2.7",
             "target-dir": "React/Socket",
             "source": {
                 "type": "git",
@@ -524,7 +524,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Console/archive/v2.1.7.zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.1.7",
                 "reference": "v2.1.7",
                 "shasum": ""
             },
