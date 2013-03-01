@@ -117,9 +117,9 @@ You should have received a copy of the GNU Lesser General Public License along w
 [3]: http://getcomposer.org
      "Composer"
 [4]: https://github.com/sebastianbergmann/phpcpd
-     "sebastianbergmann/phpcpd · GitHub"
+     "sebastianbergmann/phpcpd Â· GitHub"
 [5]: https://github.com/sebastianbergmann/phpdcd
-     "sebastianbergmann/phpdcd · GitHub"
+     "sebastianbergmann/phpdcd Â· GitHub"
 [6]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
      "PSR-0 requirements for autoloader interoperability"
 [7]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
@@ -133,15 +133,15 @@ You should have received a copy of the GNU Lesser General Public License along w
 [18]: http://phpmd.org
       "PHPMD - PHP Mess Detector"
 [19]: http://phpunit.de
-      "sebastianbergmann/phpunit · GitHub"
+      "sebastianbergmann/phpunit Â· GitHub"
 [20]: http://semver.org
       "Semantic Versioning"
 [21]: http://tools.ietf.org/html/rfc6455
       "RFC 6455 - The WebSocket Protocol"
 [22]: https://github.com/FlorianWolters/WebSocket-Chat-Client
-      "FlorianWolters/WebSocket-Chat-Client · GitHub"
+      "FlorianWolters/WebSocket-Chat-Client Â· GitHub"
 [23]: https://github.com/Seldaek/monolog
-      "Seldaek/monolog · GitHub"
+      "Seldaek/monolog Â· GitHub"
 [24]: http://socketo.me
       "Ratchet - PHP WebSockets"
 [25]: http://symfony.com/doc/current/components/console.html
