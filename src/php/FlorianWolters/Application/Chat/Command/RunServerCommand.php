@@ -2,6 +2,7 @@
 namespace FlorianWolters\Application\Chat\Command;
 
 use FlorianWolters\Application\Chat\Server;
+use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -318,8 +319,8 @@ class RunServerCommand extends Command
     /**
      * Creates the handlers for the {@see Logger}.
      *
-     * @param array   $logType  The logtype(s).
-     * @param integer $logLevel The loglevel.
+     * @param string[] $logType  The logtype(s).
+     * @param integer  $logLevel The loglevel.
      *
      * @return boolean `true` if the handlers have been created; `false` if one
      *                 or more invalid handlers have been specified.
@@ -361,7 +362,7 @@ class RunServerCommand extends Command
     /**
      * Pushes the specified handlers to the {@see Logger}.
      *
-     * @param array $handlers The handlers to push.
+     * @param HandlerInterface[] $handlers The handlers to push.
      *
      * @return void
      */

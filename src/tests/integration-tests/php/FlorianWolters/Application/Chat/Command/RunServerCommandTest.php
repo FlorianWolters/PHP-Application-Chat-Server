@@ -27,7 +27,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     /**
      * The arguments to pass to the {@see RunServerCommand}.
      *
-     * @var array
+     * @var mixed[]
      */
     private $commandArguments;
 
@@ -123,7 +123,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return array
+     * @return string[][]
      */
     public static function providerExecuteWithValidLoglevelOption()
     {
@@ -189,7 +189,7 @@ class RunServerCommandTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return array
+     * @return string[][]
      */
     public static function providerExecuteWithValidLogtypeOption()
     {
