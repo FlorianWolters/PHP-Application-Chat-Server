@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/index.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/index.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/namespace-FlorianWolters.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-FlorianWolters.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/namespace-FlorianWolters.Application.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-FlorianWolters.Application.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/namespace-FlorianWolters.Application.Chat.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-FlorianWolters.Application.Chat.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/namespace-FlorianWolters.Application.Chat.Command.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-FlorianWolters.Application.Chat.Command.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/namespace-FlorianWolters.Application.Chat.Model.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-FlorianWolters.Application.Chat.Model.html</loc>
+</url>
+<url>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/namespace-PHP.html</loc>
 </url>
 
 
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/class-FlorianWolters.Application.Chat.Command.RunServerCommand.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-DateTime.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/class-FlorianWolters.Application.Chat.Model.Message.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-FlorianWolters.Application.Chat.Command.RunServerCommand.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/class-FlorianWolters.Application.Chat.Server.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-FlorianWolters.Application.Chat.Model.Message.html</loc>
 </url>
 <url>
-	<loc>http://florianwolters.github.com/PHP-WebSocket-Chat-Server/class-FlorianWolters.Application.Chat.ServerApplication.html</loc>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-FlorianWolters.Application.Chat.Server.html</loc>
+</url>
+<url>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-FlorianWolters.Application.Chat.ServerApplication.html</loc>
+</url>
+<url>
+	<loc>http://florianwolters.github.com/PHP-Application-Chat-Server/class-Exception.html</loc>
 </url>
 </urlset>

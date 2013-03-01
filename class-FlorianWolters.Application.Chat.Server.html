@@ -2,13 +2,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="ApiGen 2.7.0" />
+	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class FlorianWolters\Application\Chat\Server | FlorianWolters\Application\Chat</title>
+	<title>Class FlorianWolters\Application\Chat\Server | FlorianWolters\Application\Chat\Server</title>
 
-	<script type="text/javascript" src="resources/combined.js?2388493914"></script>
-	<script type="text/javascript" src="elementlist.js?1872887941"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?1567499433" />
+	<script type="text/javascript" src="resources/combined.js?819867491"></script>
+	<script type="text/javascript" src="elementlist.js?2539784232"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
 
@@ -32,6 +32,8 @@
 				<li><a href="namespace-FlorianWolters.Application.Chat.Model.html">Model</a>
 						</li>
 							</ul></li></ul></li></ul></li>
+				<li><a href="namespace-PHP.html">PHP</a>
+						</li>
 			</ul>
 		</div>
 
@@ -82,7 +84,7 @@
 		</ul>
 		<ul>
 			<li>
-				<a href="florianwolters-application-chat-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
+				<a href="florianwolters-application-chat-server-api-documentation.zip" title="Download documentation as ZIP archive"><span>Download</span></a>
 			</li>
 		</ul>
 	</div>
@@ -93,7 +95,7 @@
 
 	<div class="description">
 	
-<p>The <code><a href="class-FlorianWolters.Application.Chat.Server.html">FlorianWolters\Application\Chat\Server</a></code> class contains the logic for the chat server.</p>
+<p>The class <code><a href="class-FlorianWolters.Application.Chat.Server.html">FlorianWolters\Application\Chat\Server</a></code> contains the logic for the chat server.</p>
 
 	</div>
 
@@ -118,25 +120,20 @@
 		
 		
 		<b>Namespace:</b> <a href="namespace-FlorianWolters.html">FlorianWolters</a>\<a href="namespace-FlorianWolters.Application.html">Application</a>\<a href="namespace-FlorianWolters.Application.Chat.html">Chat</a><br />
-		<b>Package:</b> Chat<br />
+		
 
-				<b>Category:</b>
-				Application<br />
 				<b>Copyright:</b>
-				2012 Florian Wolters<br />
-				<b>License:</b>
-				<a href="http://gnu.org/licenses/lgpl.txt">LGPL-3.0+</a><br />
+				2012-2013 Florian Wolters<br />
 				<b>Author:</b>
 				Florian Wolters &lt;<a
 href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<br />
-				<b>Version:</b>
-				Release: @package_version@<br />
 				<b>Since:</b>
 				Class available since Release 0.1.0<br />
 				<b>Link:</b>
-				<a href="http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server">http://github.com/FlorianWolters/PHP-WebSocket-Chat-Server</a><br />
-		<b>Located at</b> <a href="source-class-FlorianWolters.Application.Chat.Server.html#36" title="Go to source code">FlorianWolters/Application/Chat/Server.php</a><br />
+				<a href="http://github.com/FlorianWolters/PHP-Application-Chat-Server">http://github.com/FlorianWolters/PHP-Application-Chat-Server</a><br />
+		<b>Located at</b> FlorianWolters/Application/Chat/Server.php<br />
 	</div>
+
 
 
 	<table class="summary" id="methods">
@@ -152,7 +149,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#65" title="Go to source code">__construct</a>( <span>Monolog\Logger <var>$logger</var></span> )</code>
+		<code>__construct( <span>Monolog\Logger <var>$logger</var></span> )</code>
 
 		<div class="description short">
 			
@@ -169,7 +166,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$logger</var></dt>
-					<dd><code>Monolog\Logger</code><br> The Monolog\Logger to use.</dd>
+					<dd><code>Monolog\Logger</code><br>$logger The Monolog\Logger to use.</dd>
 				</dl></div>
 
 
@@ -190,7 +187,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onOpen">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#76" title="Go to source code">onOpen</a>( <span>Ratchet\ConnectionInterface <var>$connection</var></span> )</code>
+		<code>onOpen( <span>Ratchet\ConnectionInterface <var>$connection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -207,7 +204,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$connection</var></dt>
-					<dd><code>Ratchet\ConnectionInterface</code><br> The connection that opened.</dd>
+					<dd><code>Ratchet\ConnectionInterface</code><br>$connection The connection that opened.</dd>
 				</dl></div>
 
 
@@ -228,7 +225,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onMessage">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#94" title="Go to source code">onMessage</a>( <span>Ratchet\ConnectionInterface <var>$connection</var></span>, <span>string <var>$data</var></span> )</code>
+		<code>onMessage( <span>Ratchet\ConnectionInterface <var>$connection</var></span>, <span>string <var>$data</var></span> )</code>
 
 		<div class="description short">
 			
@@ -245,9 +242,9 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$connection</var></dt>
-					<dd><code>Ratchet\ConnectionInterface</code><br> The connection that sent the message.</dd>
+					<dd><code>Ratchet\ConnectionInterface</code><br>$connection The connection that sent the message.</dd>
 					<dt><var>$data</var></dt>
-					<dd><code>string</code><br> The message.</dd>
+					<dd><code>string</code><br>$data The message.</dd>
 				</dl></div>
 
 
@@ -268,7 +265,7 @@ href="mailto:wolters.fl&#64;gmail.com">wolters.fl&#64;<!---->gmail.com</a>&gt;<b
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onClose">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#226" title="Go to source code">onClose</a>( <span>Ratchet\ConnectionInterface <var>$connection</var></span> )</code>
+		<code>onClose( <span>Ratchet\ConnectionInterface <var>$connection</var></span> )</code>
 
 		<div class="description short">
 			
@@ -287,7 +284,7 @@ closed).</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$connection</var></dt>
-					<dd><code>Ratchet\ConnectionInterface</code><br> The connection that is closing/closed.</dd>
+					<dd><code>Ratchet\ConnectionInterface</code><br>$connection The connection that is closing/closed.</dd>
 				</dl></div>
 
 
@@ -308,12 +305,12 @@ closed).</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_onError">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#250" title="Go to source code">onError</a>( <span>Ratchet\ConnectionInterface <var>$connection</var></span>, <span>Exception <var>$ex</var></span> )</code>
+		<code>onError( <span>Ratchet\ConnectionInterface <var>$connection</var></span>, <span><code><a href="class-Exception.html">Exception</a></code> <var>$ex</var></span> )</code>
 
 		<div class="description short">
 			
 <p>If there is an error with one of the connections, or somewhere in the
-application where an Exception is thrown, the Exception is sent
+application where an <code><a href="class-Exception.html">Exception</a></code> is thrown, the <code><a href="class-Exception.html">Exception</a></code> is sent
 back down the stack, handled by the server and bubbled back up the application
 through this method.</p>
 
@@ -322,7 +319,7 @@ through this method.</p>
 		<div class="description detailed hidden">
 			
 <p>If there is an error with one of the connections, or somewhere in the
-application where an Exception is thrown, the Exception is sent
+application where an <code><a href="class-Exception.html">Exception</a></code> is thrown, the <code><a href="class-Exception.html">Exception</a></code> is sent
 back down the stack, handled by the server and bubbled back up the application
 through this method.</p>
 
@@ -331,9 +328,9 @@ through this method.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$connection</var></dt>
-					<dd><code>Ratchet\ConnectionInterface</code><br> The connection that raised the error.</dd>
+					<dd><code>Ratchet\ConnectionInterface</code><br>$connection The connection that raised the error.</dd>
 					<dt><var>$ex</var></dt>
-					<dd><code>Exception</code><br> The Exception.</dd>
+					<dd><code><code><a href="class-Exception.html">Exception</a></code></code><br>$ex The <code><a href="class-Exception.html">Exception</a></code>.</dd>
 				</dl></div>
 
 
@@ -354,7 +351,7 @@ through this method.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_countClients">#</a>
-		<code><a href="source-class-FlorianWolters.Application.Chat.Server.html#269" title="Go to source code">countClients</a>( )</code>
+		<code>countClients( )</code>
 
 		<div class="description short">
 			
@@ -391,10 +388,18 @@ through this method.</p>
 
 
 
+
+
+
+
+
+
+
+
 </div>
 
 	<div id="footer">
-		FlorianWolters\Application\Chat API documentation generated by <a href="http://apigen.org">ApiGen 2.7.0</a>
+		FlorianWolters\Application\Chat\Server API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
