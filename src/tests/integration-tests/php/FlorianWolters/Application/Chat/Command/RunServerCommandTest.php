@@ -5,7 +5,7 @@ use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
- * Test class for {@link RunServerCommand}.
+ * Test class for {@see RunServerCommand}.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -18,20 +18,21 @@ use Symfony\Component\Console\Tester\CommandTester;
 class RunServerCommandTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * The {@link RunServerCommand} under test.
+     * The {@see RunServerCommand} object under test.
      *
      * @var RunServerCommand
      */
     private $command;
 
     /**
-     * The arguments to pass to the {@link RunServerCommand}.
+     * The arguments to pass to the {@see RunServerCommand}.
+     *
      * @var array
      */
     private $commandArguments;
 
     /**
-     * The {@link CommandTester} used to test the {@link RunServerCommand}.
+     * The {@see CommandTester} used to test the {@see RunServerCommand}.
      *
      * @var CommandTester
      */

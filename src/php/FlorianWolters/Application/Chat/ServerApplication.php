@@ -4,7 +4,7 @@ namespace FlorianWolters\Application\Chat;
 use Symfony\Component\Console\Application;
 
 /**
- * The {@link ServerApplication} class starts the chat server application.
+ * The class {@see ServerApplication} starts the chat server application.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -15,7 +15,7 @@ use Symfony\Component\Console\Application;
 class ServerApplication extends Application
 {
     /**
-     * Constructs a new chat server application.
+     * Constructs a new {@see ServerApplication}.
      */
     public function __construct()
     {

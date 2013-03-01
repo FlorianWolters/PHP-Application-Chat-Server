@@ -2,7 +2,7 @@
 namespace FlorianWolters\Application\Chat\Model;
 
 /**
- * Test class for {@link Message}.
+ * Test class for {@see Message}.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -15,11 +15,11 @@ namespace FlorianWolters\Application\Chat\Model;
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * The object under test.
+     * The {@see Message} object under test.
      *
      * @var Message
      */
-    private $object;
+    private $message;
 
     /**
      * Sets up the fixture.
@@ -30,7 +30,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->object = new Message(
+        $this->message = new Message(
             'hello, world',
             'Florian Wolters',
             new \DateTime('2013-01-27 00:00:00')
@@ -45,7 +45,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
     public function testMagicToString()
     {
         $expected = '{"ts":"2013-01-27 00:00:00","uid":"Florian Wolters","msg":"hello, world"}';
-        $actual = $this->object->__toString();
+        $actual = $this->message->__toString();
         $this->assertEquals($expected, $actual);
     }
 
@@ -57,7 +57,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
     public function testGetUsername()
     {
         $expected = 'Florian Wolters';
-        $actual = $this->object->getUsername();
+        $actual = $this->message->getUsername();
         $this->assertEquals($expected, $actual);
     }
 
@@ -69,7 +69,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
     public function testGetDatetime()
     {
         $expected = '2013-01-27 00:00:00';
-        $actual = $this->object->getDatetime();
+        $actual = $this->message->getDatetime();
         $this->assertEquals($expected, $actual);
     }
 
@@ -81,7 +81,7 @@ class MessageTest extends \PHPUnit_Framework_TestCase
     public function testGetText()
     {
         $expected = 'hello, world';
-        $actual = $this->object->getText();
+        $actual = $this->message->getText();
         $this->assertEquals($expected, $actual);
     }
 }

@@ -4,7 +4,7 @@ namespace FlorianWolters\Application\Chat;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
- * Test class for {@link ServerApplication}.
+ * Test class for {@see ServerApplication}.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -17,14 +17,14 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 class ServerApplicationTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * The {@link ServerApplication} under test.
+     * The {@see ServerApplication} object under test.
      *
      * @var ServerApplication
      */
-    private $application;
+    private $serverApplication;
 
     /**
-     * The {@link ApplicationTester} used to test the {@link ServerApplication}.
+     * The {@see ApplicationTester} used to test the {@see ServerApplication}.
      *
      * @var ApplicationTester
      */
@@ -39,8 +39,10 @@ class ServerApplicationTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->application = new ServerApplication;
-        $this->applicationTester = new ApplicationTester($this->application);
+        $this->serverApplication = new ServerApplication;
+        $this->applicationTester = new ApplicationTester(
+            $this->serverApplication
+        );
         $this->applicationTester->run(
             array(
                 'command' => 'run',

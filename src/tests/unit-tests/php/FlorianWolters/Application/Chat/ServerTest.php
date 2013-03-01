@@ -2,7 +2,7 @@
 namespace FlorianWolters\Application\Chat;
 
 /**
- * Test class for {@link Server}.
+ * Test class for {@see Server}.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -16,14 +16,14 @@ namespace FlorianWolters\Application\Chat;
 class ServerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * The {@link Server} under test.
+     * The {@see Server} object under test.
      *
      * @var Server
      */
     private $server;
 
     /**
-     * The mocked {@link ConnectionInterface}.
+     * The mocked {@see ConnectionInterface}.
      *
      * @var ConnectionInterface
      */

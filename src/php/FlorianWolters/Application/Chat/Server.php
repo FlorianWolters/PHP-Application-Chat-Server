@@ -1,12 +1,14 @@
 <?php
 namespace FlorianWolters\Application\Chat;
 
+use \Exception;
+use \SplObjectStorage;
 use Monolog\Logger;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
 /**
- * The {@link Server} class contains the logic for the chat server.
+ * The class {@see Server} contains the logic for the chat server.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -16,28 +18,28 @@ use Ratchet\ConnectionInterface;
 class Server implements MessageComponentInterface
 {
     /**
-     * The {@link Logger} to use.
+     * The {@see Logger} to use.
      *
      * @var Logger
      */
     private $logger;
 
     /**
-     * The clients connected to this {@link Server}.
+     * The clients connected to this {@see Server}.
      *
      * @var SplObjectStorage
      */
     private $clients;
 
     /**
-     * Constructs a new {@link Server} with the specified {@link Logger}.
+     * Constructs a new {@see Server} with the specified {@see Logger}.
      *
-     * @param Logger $logger The {@link Logger} to use.
+     * @param Logger $logger The {@see Logger} to use.
      */
     public function __construct(Logger $logger)
     {
         $this->logger = $logger;
-        $this->clients = new \SplObjectStorage;
+        $this->clients = new SplObjectStorage;
     }
 
     /**
@@ -222,17 +224,17 @@ class Server implements MessageComponentInterface
 
     /**
      * If there is an error with one of the connections, or somewhere in the
-     * application where an {@link Exception} is thrown, the {@link Exception}
-     * is sent back down the stack, handled by the server and bubbled back up
-     * the application through this method.
+     * application where an {@see Exception} is thrown, the {@see Exception} is
+     * sent back down the stack, handled by the server and bubbled back up the
+     * application through this method.
      *
      * @param ConnectionInterface $connection The connection that raised the
      *                                        error.
-     * @param Exception           $ex         The {@link Exception}.
+     * @param Exception           $ex         The {@see Exception}.
      *
      * @return void
      */
-    public function onError(ConnectionInterface $connection, \Exception $ex)
+    public function onError(ConnectionInterface $connection, Exception $ex)
     {
         $connection->close();
 
@@ -240,7 +242,7 @@ class Server implements MessageComponentInterface
     }
 
     /**
-     * Returns the number of clients connected to this {@link Server}.
+     * Returns the number of clients connected to this {@see Server}.
      *
      * @return integer The number of clients.
      */

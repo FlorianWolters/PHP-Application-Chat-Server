@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * The {@link RunServerCommand} starts the chat server.
+ * The class {@see RunServerCommand} starts the chat server.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -41,16 +41,16 @@ class RunServerCommand extends Command
     const DEFAULT_ADDRESS = '0.0.0.0';
 
     /**
-     * The default level to use for the {@link Logger}.
+     * The default level to use for the {@see Logger}.
      *
      * @var string
      */
     const DEFAULT_LOGLEVEL = Logger::WARNING;
 
     /**
-     * The available levels for the {@link Logger}.
+     * The available levels for the {@see Logger}.
      *
-     * @var array
+     * @var mixed[]
      * @todo Bad design, since Monolog also declares these. But the Monolog API
      *       does not allow to access the data.
      */
@@ -64,14 +64,14 @@ class RunServerCommand extends Command
     );
 
     /**
-     * The {@link Logger} to use.
+     * The {@see Logger} to use.
      *
      * @var Logger
      */
     private $logger;
 
     /**
-     * Constructs a new {@link RunServerCommand}.
+     * Constructs a new {@see RunServerCommand}.
      */
     public function __construct()
     {
@@ -81,7 +81,7 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Configure this {@link RunServerCommand}.
+     * Configures this {@see RunServerCommand}.
      *
      * @return void
      */
@@ -133,10 +133,10 @@ class RunServerCommand extends Command
 
 
     /**
-     * Execute this {@link RunServerCommand}.
+     * Executes this {@see RunServerCommand}.
      *
-     * @param InputInterface  $input  An {@link InputInterface} instance.
-     * @param OutputInterface $output An {@link OutputInterface} instance.
+     * @param InputInterface  $input  An {@see InputInterface} instance.
+     * @param OutputInterface $output An {@see OutputInterface} instance.
      *
      * @return integer `0` on success; `1` if unable to start the chat server;
      *                 `2` if the `--logtype` option is invalid; `3` if the
@@ -255,10 +255,10 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Writes a message to the output saying that this {@link RunServerCommand}
-     * was successful.
+     * Writes a message to the output saying that this {@see RunServerCommand}
+     * has been successful.
      *
-     * @param OutputInterface $output  An {@link OutputInterface} instance.
+     * @param OutputInterface $output  An {@see OutputInterface} instance.
      * @param integer         $port    The TCP/IP port number.
      * @param string          $address The IP address.
      *
@@ -277,10 +277,10 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Writes a message to the output saying that this {@link RunServerCommand}
-     * has failed.
+     * Writes a message to the output saying that this {@see RunServerCommand}
+     * has been failed.
      *
-     * @param OutputInterface $output  An {@link OutputInterface} instance.
+     * @param OutputInterface $output  An {@see OutputInterface} instance.
      * @param integer         $port    The TCP/IP port number.
      * @param string          $address The IP address.
      *
@@ -297,10 +297,10 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Writes a message to the output saying that this {@link RunServerCommand}
-     * was used incorrectly.
+     * Writes a message to the output saying that this {@see RunServerCommand}
+     * has been used incorrectly.
      *
-     * @param OutputInterface $output An {@link OutputInterface} instance.
+     * @param OutputInterface $output An {@see OutputInterface} instance.
      * @param string          $reason The reason for the invalid usage.
      *
      * @return void
@@ -316,7 +316,7 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Creates the handlers for the {@link Logger}.
+     * Creates the handlers for the {@see Logger}.
      *
      * @param array   $logType  The logtype(s).
      * @param integer $logLevel The loglevel.
@@ -359,7 +359,7 @@ class RunServerCommand extends Command
     }
 
     /**
-     * Pushes the specified handlers to the {@link Logger}.
+     * Pushes the specified handlers to the {@see Logger}.
      *
      * @param array $handlers The handlers to push.
      *

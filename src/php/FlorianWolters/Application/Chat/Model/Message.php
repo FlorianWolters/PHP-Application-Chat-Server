@@ -1,8 +1,10 @@
 <?php
 namespace FlorianWolters\Application\Chat\Model;
 
+use \DateTime;
+
 /**
- * An object of class {@link Message} wraps a chat message into an object.
+ * An object of class {@see Message} wraps a chat message into an object.
  *
  * @author    Florian Wolters <wolters.fl@gmail.com>
  * @copyright 2012-2013 Florian Wolters
@@ -13,48 +15,48 @@ namespace FlorianWolters\Application\Chat\Model;
 class Message
 {
     /**
-     * The format for the date and time of a {@link Message}.
+     * The format for the date and time of a {@see Message}.
      *
      * @var string
      */
     const DATETIME_FORMAT = 'Y-m-d H:i:s';
 
     /**
-     * The text of this {@link Message}.
+     * The text of this {@see Message}.
      *
      * @var string
      */
     private $text;
 
     /**
-     * The username of the user who wrote this{@link Message}.
+     * The username of the user who wrote this {@see Message}.
      *
      * @var string
      */
     private $username;
 
     /**
-     * The date and time of this {@link Message}.
+     * The date and time of this {@see Message}.
      *
      * @var integer
      */
     private $dateTime;
 
     /**
-     * Constructs a new {@link Message} with a specified text, a specified
+     * Constructs a new {@see Message} with a specified text, a specified
      * username and an optional date and time.
      *
      * If the datetime is not specified, the current datetime is used.
      *
-     * @param string    $text     The text of the {@link Message}.
-     * @param string    $username The username of the user who wrote this {@link
+     * @param string    $text     The text of the {@see Message}.
+     * @param string    $username The username of the user who wrote the {@see
      *                            Message}.
-     * @param \DateTime $dateTime The date and time of the {@link Message}.
+     * @param \DateTime $dateTime The date and time of the {@see Message}.
      */
-    public function __construct($text, $username, \DateTime $dateTime = null)
+    public function __construct($text, $username, DateTime $dateTime = null)
     {
         if (null === $dateTime) {
-            $dateTime = new \DateTime;
+            $dateTime = new DateTime;
         }
 
         $this->text = \htmlspecialchars($text, \ENT_QUOTES);
@@ -63,7 +65,7 @@ class Message
     }
 
     /**
-     * Returns a string representation of this {@link Message}.
+     * Returns a string representation of this {@see Message}.
      *
      * @return string The string representation.
      */
@@ -79,7 +81,7 @@ class Message
     }
 
     /**
-     * Returns the text of this {@link Message}.
+     * Returns the text of this {@see Message}.
      *
      * @return string The text.
      */
@@ -89,7 +91,7 @@ class Message
     }
 
     /**
-     * Returns the username of the user who wrote this {@link Message}.
+     * Returns the username of the user who wrote this {@see Message}.
      *
      * @return string The username.
      */
@@ -99,7 +101,7 @@ class Message
     }
 
     /**
-     * Returns the date and time of this {@link Message}.
+     * Returns the date and time of this {@see Message}.
      *
      * @return string The date and time.
      */
