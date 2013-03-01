@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/FlorianWolters/PHP-Application-Chat-Server.png?branch=master)](http://travis-ci.org/FlorianWolters/PHP-Application-Chat-Server)
 
-**FlorianWolters\Application\Chat\Server** is a simple [PHP][17] application implementing a chat server that uses [The WebSocket Protocol][21].
+**FlorianWolters\Application\Chat\Server** is a [PHP][17] command line interface application implementing a chat server that uses [The WebSocket Protocol][21].
 
 Access to the shell/command-line is required and a dedicated machine with root access is recommended to run **FlorianWolters\Application\Chat\Server**.
 
@@ -28,25 +28,9 @@ See [FlorianWolters/WebSocket-Chat-Client][22] for a multi-user chat client that
 ## Requirements
 
 * [PHP][17] >= 5.3.3
-* [Monolog][23] 1.3.*
-* [Ratchet][24] 0.1.*
-* [Symfony Console Component][25] 2.1.*
-
-## Installation
-
-Clone the repository into a new directory.
-
-    git clone git://github.com/FlorianWolters/PHP-Application-Chat-Server.git
-
-**FlorianWolters\Application\Chat\Server** should be installed using the dependency manager [Composer][3]. [Composer][3] can be installed with [PHP][6].
-
-    php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
-
-> This will just check a few [PHP][17] settings and then download `composer.phar` to your working directory. This file is the [Composer][3] binary. It is a PHAR ([PHP][17] archive), which is an archive format for [PHP][17] which can be run on the command line, amongst other things.
->
-> Next, run the `install` command to resolve and download dependencies:
-
-    php composer.phar install
+* [Monolog][23] >= 1.4
+* [Ratchet][24] >= 0.2
+* [Symfony Console Component][25] >= 2.1
 
 ## Usage
 
@@ -101,6 +85,22 @@ The following output should be displayed.
      Runs the chat server on the optionally specified TCP/IP port and the optionally specified IP address.
 
      The type of the logger (log to STDOUT, log to the file "chat-server.log" or log to both) and the level of the logger can be specified. The default level logs warnings and all levels above.
+
+## Installation
+
+Clone the repository into a new directory.
+
+    git clone git://github.com/FlorianWolters/PHP-Application-Chat-Server.git
+
+**FlorianWolters\Application\Chat\Server** should be installed using the dependency manager [Composer][3]. [Composer][3] can be installed with [PHP][6].
+
+    php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
+
+> This will just check a few [PHP][17] settings and then download `composer.phar` to your working directory. This file is the [Composer][3] binary. It is a PHAR ([PHP][17] archive), which is an archive format for [PHP][17] which can be run on the command line, amongst other things.
+>
+> Next, run the `install` command to resolve and download dependencies:
+
+    php composer.phar install
 
 ## License
 
